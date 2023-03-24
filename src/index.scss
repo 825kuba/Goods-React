@@ -1,0 +1,63 @@
+@import './base';
+
+// RESETS
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// FONT SIZE
+html {
+  font-size: 62.5%;
+
+  @include respond(lg) {
+    font-size: 68.75%;
+  }
+
+  @include respond(xxl) {
+    font-size: 75%;
+  }
+}
+
+// BODY BG COLOR AND NO SCROLL CLASS
+body {
+  background-color: $bg-color;
+
+  &.no-scroll {
+    overflow: hidden;
+  }
+}
+
+// MAIN FONT
+body {
+  font-family: Roboto;
+}
+
+// HEADINGS
+h2,
+h3,
+h4 {
+  font-family: 'Playfair Display';
+  letter-spacing: -0.075rem;
+}
+
+// FORM FON EXCEPT CHECKOUT
+form:not(.checkout__content) {
+  font-family: 'Playfair Display';
+}
+
+// SECTIONS WITH MAX WIDTH
+header,
+section,
+footer {
+  max-width: 2000px;
+  margin: 0 auto;
+}
+
+// UNLIMITED WIDTH SECTIONS
+.fs {
+  max-width: unset;
+}

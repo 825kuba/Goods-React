@@ -1,0 +1,40 @@
+@import '../../base';
+
+.navLinks {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  list-style: none;
+  padding: 7rem 3rem;
+  position: fixed;
+  z-index: $z-1000;
+  left: 0;
+  width: 100%;
+  max-width: 100vw;
+  height: 100vh;
+  background-color: $bg-color;
+  overflow-y: auto;
+  transition: opacity 0.5s ease;
+
+  top: 100%;
+  opacity: 0;
+
+  &.opened {
+    top: 0;
+    opacity: 1;
+  }
+
+  @include respond(lg) {
+    position: static;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2rem;
+    padding: 0;
+    flex: 1;
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    opacity: 1;
+  }
+}

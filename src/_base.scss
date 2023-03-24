@@ -1,0 +1,68 @@
+// MAIN MIXIN USED TO ADD MEDIA QUERIES
+@mixin respond($bp) {
+  @if $bp == md {
+    // 600px
+    @media only screen and (min-width: 37.5em) {
+      @content;
+    }
+  }
+  // 800px
+  @if $bp == md/lg {
+    @media only screen and (min-width: 50em) {
+      @content;
+    }
+  }
+  // 992px
+  @if $bp == lg {
+    @media only screen and (min-width: 62em) {
+      @content;
+    }
+  }
+  // 1200px
+  @if $bp == xl {
+    @media only screen and (min-width: 75em) {
+      @content;
+    }
+  }
+  // 1400px
+  @if $bp == xxl {
+    @media only screen and (min-width: 87.5em) {
+      @content;
+    }
+  }
+}
+
+// FONTS
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+// COLORS
+$black: rgb(0, 0, 0);
+$orange: rgb(255, 123, 78);
+$white: rgb(255, 255, 255);
+$bg-color: rgb(248, 246, 242);
+$gray-light: rgb(183, 173, 168);
+$gray-light-2: rgb(245, 245, 245);
+$gray-light-3: rgb(227, 223, 223);
+$gray-light-4: rgb(179, 176, 174);
+$gray-blue: rgb(127, 144, 155);
+$red: rgb(228, 44, 46);
+$green: #4bb543;
+
+// Z-INDEX VARIABLES
+$z-100: 100; // sale badge on product, item qty in cart summary in checkout
+$z-1000: 1000; // header, sticky nav bar, cart, close btns, checkout
+$z-2000: 2000;
+
+// LINKS
+a {
+  &:link,
+  &:visited {
+    text-decoration: none;
+    color: $black;
+  }
+
+  &:hover,
+  &:active {
+    color: $orange;
+  }
+}

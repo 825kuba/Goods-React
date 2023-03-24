@@ -1,0 +1,26 @@
+@import '../../base';
+
+.closeBtn {
+  font-size: 4rem;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  position: absolute;
+  top: 1.6rem;
+  right: 1.6rem;
+  z-index: $z-1000;
+
+  &:hover {
+    color: $orange;
+  }
+
+  &.hidden {
+    display: none;
+  }
+
+  &.closeMobileNav {
+    @include respond(lg) {
+      display: none;
+    }
+  }
+}

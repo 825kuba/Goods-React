@@ -1,0 +1,28 @@
+@import '../../base';
+
+.navLink {
+  display: block;
+  font-family: 'Playfair Display';
+  font-weight: 500;
+  font-size: 3rem;
+  text-align: left;
+  padding: 1.5rem 0;
+  color: $black;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+
+  &:hover,
+  &:active {
+    color: $orange;
+  }
+
+  @include respond(lg) {
+    display: initial;
+    font-family: Roboto;
+    font-weight: 400;
+    font-size: 1.6rem;
+    text-align: center;
+    padding: 0;
+  }
+}

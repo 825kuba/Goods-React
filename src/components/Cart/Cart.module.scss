@@ -1,0 +1,358 @@
+@import '../../base';
+
+// CART MODAL
+.cart {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 7rem 4rem;
+  font-size: 1.6rem;
+
+  @include respond(lg) {
+    padding: 10rem 9rem;
+  }
+
+  &__wrapper {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  // CART HEADER
+  &__head {
+    @include respond(md/lg) {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    @include respond(lg) {
+      grid-template-rows: 1fr;
+      padding-bottom: 3rem;
+    }
+  }
+
+  // CART QTY AND TOTAL HEADINGS
+  &__quantity,
+  &__total {
+    display: none;
+    font-size: 1.4rem;
+
+    @include respond(md/lg) {
+      display: initial;
+    }
+  }
+
+  // CART QUANTITY HEADING
+  &__quantity {
+    grid-row: 2/ 3;
+    grid-column: 1 / 2;
+
+    @include respond(lg) {
+      grid-row: 1 / 2;
+      grid-column: 8 / 10;
+      justify-self: center;
+    }
+  }
+
+  // CART TOTAL HEADING
+  &__total {
+    grid-row: 2/ 3;
+    grid-column: 12 / 13;
+    justify-self: end;
+
+    @include respond(lg) {
+      grid-row: 1 / 2;
+      grid-column: 11 / 13;
+    }
+  }
+
+  // MAIN CART HEADING
+  &__heading {
+    font-weight: 500;
+    grid-row: 1 / 2;
+    grid-column: 1 / 13;
+
+    @include respond(lg) {
+      grid-column: 1 / 6;
+    }
+  }
+
+  // CART ITEMS CONTAINER
+  &__container {
+    padding: 4.5rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    border-bottom: 1px solid $black;
+
+    @include respond(md/lg) {
+      border-top: 1px solid $black;
+    }
+  }
+
+  // CART ITEM
+  &__item {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(4, max-content);
+
+    // IMG
+    &__img {
+      cursor: pointer;
+      grid-row: 1 / 5;
+      grid-column: 1 / 5;
+      display: block;
+      width: 100%;
+      max-width: 100px;
+
+      // LAZY LOADING CLASS
+      &.lazy {
+        animation: pulsate 2s infinite;
+      }
+
+      // @include changeImgColor;
+
+      @include respond(md) {
+        grid-column: 1 / 4;
+      }
+
+      @include respond(md/lg) {
+        grid-row: 1 / 4;
+      }
+
+      @include respond(lg) {
+        grid-row: 1 / 5;
+        grid-column: 1 / 3;
+      }
+    }
+
+    // ITEM DESCRIPTION
+    &__text {
+      grid-row: 1 / 3;
+      grid-column: 5 / 11;
+      line-height: 1.5;
+
+      @include respond(md) {
+        grid-column: 4 / 11;
+      }
+
+      @include respond(lg) {
+        grid-column: 3 / 7;
+      }
+    }
+
+    // ITEM NAME
+    &__name {
+      & h4 {
+        font-weight: 500;
+      }
+      @include respond(md/lg) {
+        font-size: 2rem;
+      }
+    }
+
+    // ITEM SIZE
+    &__size {
+      font-size: 1.4rem;
+    }
+
+    // ITEM PRICE
+    &__price {
+      grid-row: 1 / 2;
+      grid-column: 11 / 13;
+      justify-self: end;
+
+      @include respond(md/lg) {
+        grid-row: 4 / 5;
+      }
+
+      @include respond(lg) {
+        grid-row: 1 / 2;
+        grid-column: 11 / 13;
+      }
+    }
+
+    // ITEM QTY
+    &__qty {
+      grid-row: 3 / 4;
+      grid-column: 5 / 10;
+      display: flex;
+
+      @include respond(md) {
+        grid-column: 4 / 9;
+      }
+
+      @include respond(md/lg) {
+        grid-row: 4 / 5;
+        grid-column: 1 / 5;
+      }
+
+      @include respond(lg) {
+        grid-row: 1 / 2;
+        grid-column: 8 / 10;
+      }
+    }
+
+    // ITEM QTY WRAP
+    &__input-wrap {
+      display: flex;
+      flex: 1;
+      gap: 1rem;
+
+      // INPUT FIELD
+      & input {
+        text-align: center;
+        width: 100%;
+      }
+
+      // + - BTNS
+      & button {
+        font-size: 2rem;
+      }
+    }
+
+    // BTNS IN CART ITEM
+    & button {
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+    }
+
+    // REMOVE BTN
+    &__remove {
+      grid-row: 4 / 5;
+      grid-column: 5 / 7;
+      font-size: 1.25rem;
+      justify-self: start;
+
+      &:hover {
+        color: $orange;
+      }
+
+      @include respond(md) {
+        grid-column: 4 / 7;
+      }
+
+      @include respond(md/lg) {
+        grid-row: 3 / 4;
+        grid-column: 4 / 7;
+      }
+
+      @include respond(lg) {
+        grid-row: 3 / 4;
+        grid-column: 3 / 5;
+      }
+    }
+  }
+
+  // BOTTOM SECTION OF CART MODAL
+  &__summary {
+    padding: 4rem 0;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 6rem;
+
+    @include respond(md/lg) {
+      flex-direction: row;
+      gap: 10rem;
+      justify-content: space-between;
+    }
+  }
+
+  // TEXTAREA SECTION
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    flex: 1;
+
+    @include respond(md/lg) {
+      flex: 0.5;
+    }
+
+    & textarea {
+      border-radius: 1.5rem;
+      background-color: transparent;
+      padding: 1.5rem;
+      font-size: 1.5rem;
+      resize: vertical;
+      max-width: 100%;
+    }
+  }
+
+  // CHECKOUT SECTION
+  &__checkout {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+
+    @include respond(md/lg) {
+      text-align: end;
+    }
+
+    & h6 {
+      font-size: 1.6rem;
+    }
+
+    & h5 {
+      font-size: 1.7rem;
+    }
+
+    & p {
+      font-size: 1.2rem;
+    }
+  }
+
+  // PRICE LINE
+  &__subtotal {
+    display: flex;
+    justify-content: space-between;
+
+    &,
+    & * {
+      font-weight: 400;
+    }
+  }
+
+  // CHECKOUT BTN
+  &__checkout-btn {
+    @include respond(lg) {
+      width: 25rem;
+      margin-left: auto;
+    }
+  }
+
+  // message for when cart is updated
+  &__message {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    background-color: $orange;
+    color: $black;
+    padding: 1rem 2rem;
+    margin: 1rem;
+    border: none;
+    border-radius: 3px;
+    font-size: 2rem;
+    font-weight: 300;
+    width: max-content;
+    box-shadow: rgba($black, 0.3) 0 0 30px;
+
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+
+    &.hidden {
+      visibility: hidden;
+      opacity: 0;
+      transition: visibility 0s 0.3s, opacity 0.3s ease;
+    }
+  }
+}

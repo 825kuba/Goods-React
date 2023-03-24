@@ -1,0 +1,17 @@
+@import '../../base';
+
+.header {
+  z-index: $z-1000;
+
+  @include respond(lg) {
+    position: sticky;
+    top: 0;
+  }
+}
+
+.discount {
+  background-color: $orange;
+  font-size: 1.5rem;
+  text-align: center;
+  padding: 0.5rem;
+}

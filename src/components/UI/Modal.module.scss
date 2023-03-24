@@ -1,0 +1,21 @@
+@import '../../base';
+
+.modal {
+  position: fixed;
+  z-index: $z-2000;
+  left: 0;
+  width: 100%;
+  max-width: 100vw;
+  height: 100vh;
+  background-color: $bg-color;
+
+  top: -200%;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  overflow: auto;
+
+  &.open {
+    top: 0;
+    opacity: 1;
+  }
+}

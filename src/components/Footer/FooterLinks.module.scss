@@ -1,0 +1,21 @@
+@import '../../base';
+
+.navLinks {
+  grid-row: 2/3;
+  grid-column: 1/2;
+
+  @include respond(lg) {
+    grid-row: 1/2;
+    grid-column: 2/3;
+  }
+}
+
+.socialLinks {
+  grid-row: 2/3;
+  grid-column: 2/3;
+
+  @include respond(lg) {
+    grid-row: 1/2;
+    grid-column: 3/4;
+  }
+}
