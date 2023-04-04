@@ -1,0 +1,40 @@
+@import '../../../base';
+
+.shopLink {
+  flex: 0 0 72.5%;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  scroll-snap-align: start;
+
+  @include respond(md) {
+    flex: 0 0 calc(50% - (4rem / 2));
+  }
+
+  @include respond(lg) {
+    flex: 1;
+  }
+
+  // USED TO MAKE IMGS APPEAR THE SAME HEIGHT - IT'S JUST WHITE ELEMENT GROWING TO FILL IN THE SPACE
+  & .filling {
+    background-color: $white;
+    flex-grow: 1;
+  }
+
+  // ITEM IMG
+  & img {
+    max-width: 100%;
+    object-fit: contain;
+  }
+
+  // ITEM NAME
+  & h3 {
+    font-size: 2rem;
+    margin: 2rem 0;
+
+    @include respond(lg) {
+      font-size: 1.6rem;
+    }
+  }
+}

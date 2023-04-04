@@ -1,0 +1,22 @@
+@import '../../../base';
+
+.picture {
+  & img {
+    max-width: 100%;
+  }
+
+  @include respond(lg) {
+    &:nth-of-type(1) {
+      grid-area: pic1;
+    }
+    &:nth-of-type(2) {
+      grid-area: pic2;
+    }
+    &:nth-of-type(3) {
+      grid-area: pic3;
+    }
+    &:nth-of-type(4) {
+      grid-area: pic4;
+    }
+  }
+}

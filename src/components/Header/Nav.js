@@ -25,7 +25,10 @@ const Nav = props => {
           Menu
         </button>
       </div>
-      <NavLinks menuClass={mobileMenuOpened ? 'opened' : ''} />
+      <NavLinks
+        menuClass={mobileMenuOpened ? 'opened' : ''}
+        categories={props.categories}
+      />
       {mobileMenuOpened && (
         <CloseBtn
           className={`closeMobileNav`}

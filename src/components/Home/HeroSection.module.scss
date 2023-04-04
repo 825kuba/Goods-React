@@ -1,0 +1,55 @@
+@import '../../base';
+
+// HERO IMG SECTION ON MAIN PAGE
+.hero {
+  padding: 0 2rem;
+  @include respond(lg) {
+    padding: 0 3.5rem;
+  }
+
+  // HERO IMG WRAPPER
+  & article {
+    min-height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 60% center;
+    background-image: url('../../assets/hero-sm.jpg');
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2rem;
+    text-align: center;
+    padding: 4rem 2.5rem;
+    border-radius: 5rem;
+
+    @include respond(md) {
+      background-image: url('../../assets/hero-md.jpg');
+    }
+    @include respond(lg) {
+      background-image: url('../../assets/hero-lg.jpg');
+    }
+  }
+
+  // HEADING ON HERO IMG
+  & h1 {
+    font-size: 4.5rem;
+    font-weight: 500;
+    color: $white;
+  }
+
+  // BTN ON HERO IMG
+  & button {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    border: none;
+    background-color: $orange;
+    border-radius: 500rem;
+    padding: 1.3rem 2.05rem;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $white;
+    }
+  }
+}

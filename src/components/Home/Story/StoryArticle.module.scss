@@ -1,0 +1,36 @@
+@import '../../../base';
+
+.storyArticle {
+  margin: 5rem auto;
+  max-width: 25rem;
+
+  @include respond(md) {
+    max-width: 70%;
+  }
+
+  & h3 {
+    font-size: 3.5rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+  }
+
+  & p {
+    font-size: 1.5rem;
+    line-height: 175%;
+  }
+
+  @include respond(lg) {
+    &:nth-of-type(1) {
+      grid-area: text1;
+    }
+    &:nth-of-type(2) {
+      grid-area: text2;
+    }
+    &:nth-of-type(3) {
+      grid-area: text3;
+    }
+    &:nth-of-type(4) {
+      grid-area: text4;
+    }
+  }
+}

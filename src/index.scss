@@ -37,6 +37,7 @@ body {
 }
 
 // HEADINGS
+h1,
 h2,
 h3,
 h4 {
@@ -44,20 +45,20 @@ h4 {
   letter-spacing: -0.075rem;
 }
 
-// FORM FON EXCEPT CHECKOUT
+// FORM FONT EXCEPT CHECKOUT
 form:not(.checkout__content) {
   font-family: 'Playfair Display';
 }
 
 // SECTIONS WITH MAX WIDTH
-header,
-section,
-footer {
-  max-width: 2000px;
-  margin: 0 auto;
-}
+// header,
+// section,
+// footer {
+//   max-width: 2000px;
+//   margin: 0 auto;
+// }
 
 // UNLIMITED WIDTH SECTIONS
-.fs {
-  max-width: unset;
-}
+// .fs {
+//   max-width: unset;
+// }

@@ -1,0 +1,72 @@
+// MAIN MIXIN USED TO ADD MEDIA QUERIES
+@mixin respond($bp) {
+  @if $bp == md {
+    // 600px
+    @media only screen and (min-width: 37.5em) {
+      @content;
+    }
+  }
+  // 800px
+  @if $bp == md/lg {
+    @media only screen and (min-width: 50em) {
+      @content;
+    }
+  }
+  // 992px
+  @if $bp == lg {
+    @media only screen and (min-width: 62em) {
+      @content;
+    }
+  }
+  // 1200px
+  @if $bp == xl {
+    @media only screen and (min-width: 75em) {
+      @content;
+    }
+  }
+  // 1400px
+  @if $bp == xxl {
+    @media only screen and (min-width: 87.5em) {
+      @content;
+    }
+  }
+}
+
+// USED FOR PRODUCT IMG TO SIMULATE DIFFERENT COLORS
+@mixin changeImgColor {
+  &[data-color='color-2'] {
+    filter: hue-rotate(90deg);
+  }
+
+  &[data-color='color-3'] {
+    filter: hue-rotate(180deg);
+  }
+
+  &[data-color='color-4'] {
+    filter: hue-rotate(270deg);
+  }
+}
+
+// IMAGE GALLERY
+@mixin imageContainer {
+  overflow: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+  }
+}
+
+// IMG REVEALING ANIMATION
+@mixin slide-in {
+  transition: all 0.35s ease-out 0.1s;
+  transform: translateY(0);
+  opacity: 1;
+
+  &.unrevealed {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+}
