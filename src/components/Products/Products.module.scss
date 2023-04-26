@@ -1,0 +1,42 @@
+@import '../../base';
+@import '../../keyframes';
+
+.products {
+  padding: 7rem 2rem;
+
+  @include respond(lg) {
+    padding: 7rem 3rem;
+  }
+
+  // HEADING OF PRODUCTS TYPE
+  & h2 {
+    font-size: 3rem;
+    font-weight: 500;
+    margin-bottom: 7rem;
+  }
+
+  &__container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: stretch;
+    --gap: 4rem;
+    gap: var(--gap);
+
+    @include respond(lg) {
+      --gap: 5rem;
+    }
+  }
+}
+
+.loading {
+  font-size: 2.5rem;
+  font-family: 'Playfair Display';
+  text-align: center;
+  animation: change 3s infinite;
+}
+
+.error {
+  font-size: 2.5rem;
+  text-align: center;
+  color: $orange;
+}

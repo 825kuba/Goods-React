@@ -28,6 +28,8 @@ const Nav = props => {
       <NavLinks
         menuClass={mobileMenuOpened ? 'opened' : ''}
         categories={props.categories}
+        onClickLink={closeMobileMenuHandler}
+        onChooseCategory={props.onChooseCategory}
       />
       {mobileMenuOpened && (
         <CloseBtn

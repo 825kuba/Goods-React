@@ -2,16 +2,16 @@ import React from 'react';
 
 import classes from './Home.module.scss';
 
-import HeroSection from './HeroSection';
-import QuoteSection from './QuoteSection';
-import StorySection from './Story/StorySection';
-import ReviewsSection from './ReviewsSection';
+import HeroSection from './HeroSection/HeroSection';
+import QuoteSection from './QuoteSection/QuoteSection';
+import StorySection from './StorySection/StorySection';
+import ReviewsSection from './ReviewSection/ReviewsSection';
 import ShopSection from './ShopSection/ShopSection';
 
 const Home = props => {
   return (
     <React.Fragment>
-      <HeroSection />
+      <HeroSection onChooseCategory={props.onChooseCategory} />
       <QuoteSection className="white">
         Quality stylegoods. Designed to last, built for Goods.
       </QuoteSection>
@@ -22,7 +22,10 @@ const Home = props => {
         <br />
         Good stuff is from Goods.
       </QuoteSection>
-      <ShopSection categories={props.categories} />
+      <ShopSection
+        categories={props.categories}
+        onChooseCategory={props.onChooseCategory}
+      />
     </React.Fragment>
   );
 };

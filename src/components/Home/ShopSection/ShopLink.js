@@ -9,12 +9,17 @@ const ShopLink = props => {
     props.onSetImgWidth(imgRef.current.clientWidth);
   };
 
-  window.addEventListener('resize', setImgWidthHandler);
+  const clickLinkHandler = () => {
+    props.onChooseCategory(props.linkName);
+  };
+
+  const linkNameShort = props.linkName.replace(`'s clothing`, '');
+
   return (
-    <a className={classes.shopLink}>
+    <a className={classes.shopLink} onClick={clickLinkHandler}>
       <div className={classes.filling}></div>
       <img src={props.src} ref={imgRef} onLoad={setImgWidthHandler}></img>
-      <h3>{props.linkName}</h3>
+      <h3>{linkNameShort}</h3>
     </a>
   );
 };

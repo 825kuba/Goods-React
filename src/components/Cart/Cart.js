@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import classes from './Cart.module.scss';
 
@@ -9,11 +9,7 @@ const Cart = props => {
   return (
     <div className={classes.cart}>
       <div className={classes.cart__wrapper}>
-        <CloseBtn
-          className={classes['cart__close-cart']}
-          aria-label="Close cart"
-          onClick={props.onCloseCart}
-        />
+        <CloseBtn aria-label="Close cart" onClick={props.onCloseCart} />
         <div className={classes.cart__head}>
           <h2 className={classes.cart__heading}>Shopping Cart</h2>
           <p className={classes.cart__quantity}>Quantity</p>

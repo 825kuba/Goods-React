@@ -11,7 +11,11 @@ const Header = props => {
         Use code FRONTEND10 at checkout for 10% OFF!
       </aside>
       <header className={classes.header}>
-        <Nav onOpenCart={props.onOpenCart} categories={props.categories} />
+        <Nav
+          onOpenCart={props.onOpenCart}
+          categories={props.categories}
+          onChooseCategory={props.onChooseCategory}
+        />
       </header>
     </React.Fragment>
   );

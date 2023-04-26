@@ -30,7 +30,7 @@ const ShopSection = props => {
   return (
     <section className={classes.shopSection}>
       <div>
-        <h3>Shop Products</h3>
+        <h2>Shop Products</h2>
         <p>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis,
           dolorem. Eaque autem odit dolores dolorem error, facere iure repellat
@@ -46,6 +46,7 @@ const ShopSection = props => {
             key={link.id}
             src={link.src}
             onSetImgWidth={setImgWidthHandler}
+            onChooseCategory={props.onChooseCategory}
           />
         ))}
       </div>
