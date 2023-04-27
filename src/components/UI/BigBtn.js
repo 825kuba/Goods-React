@@ -5,7 +5,7 @@ const BigBtn = props => {
   const btnClass = `${classes['big-btn']} ${classes[propsClass]}`;
 
   return (
-    <button className={btnClass} aria-label={props.children}>
+    <button className={btnClass} aria-label={props['aria-label']}>
       {props.children}
     </button>
   );

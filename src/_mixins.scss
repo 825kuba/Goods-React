@@ -34,15 +34,15 @@
 
 // USED FOR PRODUCT IMG TO SIMULATE DIFFERENT COLORS
 @mixin changeImgColor {
-  &[data-color='color-2'] {
+  &[data-color='2'] {
     filter: hue-rotate(90deg);
   }
 
-  &[data-color='color-3'] {
+  &[data-color='3'] {
     filter: hue-rotate(180deg);
   }
 
-  &[data-color='color-4'] {
+  &[data-color='4'] {
     filter: hue-rotate(270deg);
   }
 }

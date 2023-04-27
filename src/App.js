@@ -6,7 +6,7 @@ import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import Products from './components/Products/Products';
 import Footer from './components/Footer/Footer';
-import ProductView from './components/Products/ProductView';
+import ProductView from './components/Products/ProductView/ProductView';
 
 const categories = [
   {
@@ -45,9 +45,12 @@ function App() {
 
   // modal window for a clicked product
   const [productOpen, setProductOpen] = useState(false);
+  // chosen product
+  const [chosenProduct, setChosenProduct] = useState(null);
 
-  const openProductHandler = () => {
+  const openProductHandler = product => {
     setProductOpen(true);
+    setChosenProduct(product);
   };
 
   const closeProductHandler = () => {
@@ -80,7 +83,12 @@ function App() {
         {cartOpened && <Cart onCloseCart={closeCartHandler} />}
       </Modal>
       <Modal modalOpen={productOpen}>
-        {productOpen && <ProductView onCloseProduct={closeProductHandler} />}
+        {productOpen && (
+          <ProductView
+            onCloseProduct={closeProductHandler}
+            product={chosenProduct}
+          />
+        )}
       </Modal>
       <Header
         onOpenCart={openCartHandler}

@@ -19,3 +19,8 @@
     opacity: 1;
   }
 }
+
+// HIDE BODY SCROLL BAR WHEN MODAL OPENED
+body:has(.modal.open) {
+  overflow: hidden;
+}

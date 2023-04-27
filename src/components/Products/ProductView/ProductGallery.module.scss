@@ -1,0 +1,73 @@
+@import '../../../base';
+
+.productView__gallery {
+  @include respond(md/lg) {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 50px 1fr;
+    grid-template-rows: repeat(10, 1fr);
+  }
+
+  // IMG GALLERY IGMS
+  & .images {
+    display: flex;
+    gap: 4rem;
+    margin-bottom: 2rem;
+
+    @include imageContainer;
+    @include respond(md/lg) {
+      grid-column: 1 / 2;
+      grid-row: 1 / -1;
+      flex-direction: column;
+      gap: 2rem;
+    }
+  }
+
+  & .img {
+    max-width: 72.5%;
+    scroll-snap-align: start;
+    background-color: grey;
+
+    @include respond(md/lg) {
+      max-width: 100%;
+    }
+
+    // ONLY ONE IMG IN GALLERY
+    &.solo {
+      max-width: 100%;
+      margin: 0 auto;
+
+      @include respond(md/lg) {
+        margin: 0;
+      }
+    }
+
+    &:not(.img--big) {
+      @include respond(md/lg) {
+        cursor: pointer;
+      }
+    }
+
+    // SELECTED IMG - BIGGER SCREENS ONLY
+    &--big {
+      display: none;
+      @include respond(md/lg) {
+        display: block;
+        grid-column: 2 / 3;
+        grid-row: 1 / -1;
+      }
+    }
+
+    &.selected {
+      @include respond(md/lg) {
+        border: 1px solid $black;
+      }
+    }
+
+    @include changeImgColor;
+
+    &.lazy {
+      animation: pulsate 2s infinite;
+    }
+  }
+}

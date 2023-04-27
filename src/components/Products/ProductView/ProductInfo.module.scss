@@ -1,0 +1,60 @@
+@import '../../../base';
+
+.productView__info {
+  // PRODUCT TITLE
+  & .title {
+    font-size: 3.5rem;
+    font-weight: 500;
+  }
+
+  // PRODUCT PRICE
+  & .price {
+    font-size: 3.5rem;
+    font-weight: light;
+    font-family: 'Playfair Display';
+    display: flex;
+    gap: 2rem;
+
+    &--now {
+      color: $orange;
+    }
+
+    &--before {
+      text-decoration: line-through;
+      color: $gray-light;
+    }
+  }
+
+  // PRODCUT REVIEW STARS
+  .reviews {
+    margin: 4rem 0;
+    display: flex;
+    gap: 0.5rem;
+    font-size: 1.4rem;
+    cursor: pointer;
+
+    &__stars {
+      color: $orange;
+    }
+  }
+
+  // INSTALLMENT MESSAGE
+  & .installment {
+    font-size: 1.6rem;
+
+    & img {
+      height: 1.5rem;
+      vertical-align: middle;
+    }
+
+    & a:link,
+    & a:visited {
+      text-decoration: underline;
+    }
+
+    & a:hover,
+    & a:active {
+      color: $black;
+    }
+  }
+}

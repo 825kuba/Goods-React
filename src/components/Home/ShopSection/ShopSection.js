@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useRef } from 'react';
 
 import classes from './ShopSection.module.scss';
 
@@ -6,16 +6,11 @@ import ShopLink from './ShopLink';
 import GalleryBtns from '../../UI/GalleryBtns';
 
 const ShopSection = props => {
-  const [imgWidth, setImgWidth] = useState(0);
-
-  const setImgWidthHandler = width => {
-    setImgWidth(width);
-  };
-
+  const linkRef = useRef();
   const galleryRef = useRef();
 
   const scrollGalleryHandler = dir => {
-    galleryRef.current.scrollLeft += imgWidth * dir;
+    galleryRef.current.scrollLeft += linkRef.current.clientWidth * dir;
   };
 
   // const imgObserver = new IntersectionObserver(
@@ -45,7 +40,7 @@ const ShopSection = props => {
             linkName={link.name}
             key={link.id}
             src={link.src}
-            onSetImgWidth={setImgWidthHandler}
+            ref={linkRef}
             onChooseCategory={props.onChooseCategory}
           />
         ))}

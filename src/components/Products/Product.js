@@ -3,11 +3,15 @@ import classes from './Product.module.scss';
 const Product = props => {
   const imgSrc = `${props.img}`;
 
+  const clickProductHandler = () => {
+    props.onClick(props.id);
+  };
+
   return (
-    <article className={classes.product} onClick={props.onOpenProduct}>
+    <article className={classes.product} onClick={clickProductHandler}>
       {props.sale ? <span className={classes.badge}>on sale</span> : ''}
 
-      <img src={imgSrc} alt={props.title} />
+      {/* <img src={imgSrc} alt={props.title} /> */}
       <h3>{props.title}</h3>
 
       <div className={classes.price}>

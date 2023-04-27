@@ -1,0 +1,33 @@
+@import '../../../base';
+
+.productView {
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  padding: 7rem 0 7rem 0;
+
+  @include respond(md/lg) {
+    flex-direction: row;
+    justify-content: center;
+
+    padding: 8rem 2rem;
+  }
+
+  @include respond(lg) {
+    padding: 8rem 8rem;
+  }
+
+  &__main {
+    margin: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    max-width: 35rem;
+  }
+
+  // PRODUCT DECRIPTION
+  &__descr {
+    font-size: 1.6rem;
+    line-height: 125%;
+  }
+}

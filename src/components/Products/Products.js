@@ -2,7 +2,7 @@ import classes from './Products.module.scss';
 
 import Product from './Product';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 
 const DUMMY_PRODUCTS = [
   {
@@ -52,7 +52,7 @@ const Products = props => {
 
       const data = await response.json();
       data.forEach((prod, i) => (prod.sale = i <= 1 ? true : false));
-
+      console.log(data);
       setProducts(data);
     } catch (err) {
       setError(err.message);
@@ -64,6 +64,11 @@ const Products = props => {
   useEffect(() => {
     fetchProducts(categoryFormated);
   }, [categoryFormated]);
+
+  const clickProductHandler = id => {
+    const clickedProduct = products.find(prod => prod.id === id);
+    props.onOpenProduct(clickedProduct);
+  };
 
   return (
     <section className={classes.products}>
@@ -79,11 +84,14 @@ const Products = props => {
             return (
               <Product
                 key={prod.id}
+                id={prod.id}
                 title={prod.title}
                 price={prod.price}
                 img={prod.image}
                 sale={prod.sale}
-                onOpenProduct={props.onOpenProduct}
+                descr={prod.description}
+                rating={prod.rating}
+                onClick={clickProductHandler}
               />
             );
           })}
