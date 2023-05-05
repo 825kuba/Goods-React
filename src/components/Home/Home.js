@@ -1,7 +1,5 @@
 import React from 'react';
 
-import classes from './Home.module.scss';
-
 import HeroSection from './HeroSection/HeroSection';
 import QuoteSection from './QuoteSection/QuoteSection';
 import StorySection from './StorySection/StorySection';

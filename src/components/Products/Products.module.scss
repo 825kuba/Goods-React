@@ -1,4 +1,4 @@
-@import '../../base';
+@import '../../variables';
 @import '../../keyframes';
 
 .products {
@@ -7,6 +7,8 @@
   @include respond(lg) {
     padding: 7rem 3rem;
   }
+
+  @include maxWidth;
 
   // HEADING OF PRODUCTS TYPE
   & h2 {

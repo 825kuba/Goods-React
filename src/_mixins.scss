@@ -32,6 +32,12 @@
   }
 }
 
+// USED TO SET MAX WIDTH OF ELEMENT
+@mixin maxWidth {
+  max-width: 2000px;
+  margin: 0 auto;
+}
+
 // USED FOR PRODUCT IMG TO SIMULATE DIFFERENT COLORS
 @mixin changeImgColor {
   &[data-color='2'] {

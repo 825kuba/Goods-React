@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 
 import classes from './FooterForm.module.scss';
 
-const FooterForm = props => {
+const FooterForm = () => {
   const [formSubmited, setFormSubmited] = useState(false);
 
   const inputRef = useRef();
@@ -33,7 +33,7 @@ const FooterForm = props => {
 
   return (
     <div className={classes.subscribe}>
-      <h3>Keep in touch</h3>
+      <h2>Keep in touch</h2>
       <p>Sign up to receive news and updates.</p>
       <form
         action=""

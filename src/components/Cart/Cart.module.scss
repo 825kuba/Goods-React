@@ -1,5 +1,4 @@
-@import '../../base';
-@import '../../keyframes';
+@import '../../variables';
 
 // CART MODAL
 .cart {
@@ -184,24 +183,17 @@
     position: fixed;
     bottom: 0;
     right: 0;
-    background-color: $green;
-    color: $white;
-    // padding: 1rem 2rem;
-    // padding: 0.5rem;
+    width: 5rem;
+    height: 5rem;
+    margin: 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 1rem;
+    background-color: $green;
+    color: $white;
     border: none;
-    // border-radius: 3px;
     border-radius: 50%;
     font-size: 3rem;
-    // font-weight: 300;
-    // width: max-content;
-    // text-align: center;
-    vertical-align: middle;
-    width: 5rem;
-    height: 5rem;
     box-shadow: rgba($black, 0.3) 0 0 30px;
 
     visibility: hidden;

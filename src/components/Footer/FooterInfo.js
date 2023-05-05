@@ -1,6 +1,4 @@
-import classes from './FooterInfo.module.scss';
-
-const FooterInfo = props => {
+const FooterInfo = () => {
   return (
     <p>
       Made by

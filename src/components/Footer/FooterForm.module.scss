@@ -1,4 +1,4 @@
-@import '../../base';
+@import '../../variables';
 
 .subscribe {
   grid-row: 3/4;
@@ -14,7 +14,7 @@
     grid-column: 4/6;
   }
 
-  & h3 {
+  & h2 {
     font-size: 3.5rem;
     font-weight: 700;
     font-family: Roboto;

@@ -1,4 +1,7 @@
-@import './base';
+@import './variables';
+
+// FONTS
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
 
 // RESETS
 *,
@@ -9,6 +12,7 @@
   box-sizing: border-box;
 }
 
+// GLOBAL FOCUS STYLE
 *:focus-visible {
   outline: 2.5px solid $orange;
 }
@@ -17,7 +21,7 @@
 html {
   font-size: 62.5%;
 
-  @include respond(lg) {
+  @include respond(xl) {
     font-size: 68.75%;
   }
 
@@ -26,13 +30,9 @@ html {
   }
 }
 
-// BODY BG COLOR AND NO SCROLL CLASS
+// BODY BG COLOR AND MAIN FONT
 body {
   background-color: $bg-color;
-}
-
-// MAIN FONT
-body {
   font-family: Roboto;
 }
 
@@ -48,15 +48,16 @@ form:not(.checkout__content) {
   font-family: 'Playfair Display';
 }
 
-// SECTIONS WITH MAX WIDTH
-// header,
-// section,
-// footer {
-//   max-width: 2000px;
-//   margin: 0 auto;
-// }
+// LINKS
+a {
+  &:link,
+  &:visited {
+    text-decoration: none;
+    color: $black;
+  }
 
-// UNLIMITED WIDTH SECTIONS
-// .fs {
-//   max-width: unset;
-// }
+  &:hover,
+  &:active {
+    color: $orange;
+  }
+}

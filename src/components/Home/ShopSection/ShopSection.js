@@ -24,28 +24,30 @@ const ShopSection = props => {
 
   return (
     <section className={classes.shopSection}>
-      <div>
-        <h2>Shop Products</h2>
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis,
-          dolorem. Eaque autem odit dolores dolorem error, facere iure repellat
-          quibusdam natus vero molestias necessitatibus adipisci! Odit optio,
-          soluta tempore, sint tempora qui sequi sunt voluptate officia
-          accusamus voluptatem voluptates error.
-        </p>
+      <div className={classes.wrapper}>
+        <div>
+          <h2>Shop Products</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis,
+            dolorem. Eaque autem odit dolores dolorem error, facere iure
+            repellat quibusdam natus vero molestias necessitatibus adipisci!
+            Odit optio, soluta tempore, sint tempora qui sequi sunt voluptate
+            officia accusamus voluptatem voluptates error.
+          </p>
+        </div>
+        <div className={classes.links} ref={galleryRef}>
+          {props.categories.map(link => (
+            <ShopLink
+              linkName={link.name}
+              key={link.id}
+              src={link.src}
+              ref={linkRef}
+              onChooseCategory={props.onChooseCategory}
+            />
+          ))}
+        </div>
+        <GalleryBtns onClickBtn={scrollGalleryHandler} />
       </div>
-      <div className={classes.links} ref={galleryRef}>
-        {props.categories.map(link => (
-          <ShopLink
-            linkName={link.name}
-            key={link.id}
-            src={link.src}
-            ref={linkRef}
-            onChooseCategory={props.onChooseCategory}
-          />
-        ))}
-      </div>
-      <GalleryBtns onClickBtn={scrollGalleryHandler} />
     </section>
   );
 };

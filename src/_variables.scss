@@ -1,8 +1,5 @@
 @import './mixins';
 
-// FONTS
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
-
 // COLORS
 $black: rgb(0, 0, 0);
 $orange: rgb(255, 123, 78);
@@ -21,17 +18,3 @@ $green: #4bb543;
 $z-100: 100; // sale badge on product, item qty in cart summary in checkout
 $z-1000: 1000; // header, sticky nav bar, cart, close btns, checkout
 $z-2000: 2000;
-
-// LINKS
-a {
-  &:link,
-  &:visited {
-    text-decoration: none;
-    color: $black;
-  }
-
-  &:hover,
-  &:active {
-    color: $orange;
-  }
-}

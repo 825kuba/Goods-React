@@ -1,6 +1,8 @@
-@import '../../base';
+@import '../../variables';
 
-.footer {
+footer {
   padding: 8rem 2rem 3rem 2rem;
   font-size: 1.5rem;
+
+  @include maxWidth;
 }

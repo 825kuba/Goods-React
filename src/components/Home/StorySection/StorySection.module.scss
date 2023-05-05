@@ -1,7 +1,9 @@
-@import '../../../base';
+@import '../../../variables';
 
 .storySection {
   padding: 0 3rem;
+
+  @include maxWidth;
 
   display: flex;
   flex-direction: column;

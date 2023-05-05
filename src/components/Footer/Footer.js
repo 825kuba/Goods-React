@@ -5,12 +5,12 @@ import classes from './Footer.module.scss';
 import FooterNav from './FooterNav';
 import FooterInfo from './FooterInfo';
 
-const Footer = props => {
+const Footer = () => {
   return (
-    <div className={classes.footer}>
+    <footer>
       <FooterNav />
       <FooterInfo />
-    </div>
+    </footer>
   );
 };
 

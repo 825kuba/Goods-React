@@ -1,7 +1,8 @@
-@import '../../base';
+@import '../../variables';
 
 .header {
   z-index: $z-1000;
+  background-color: $bg-color;
 
   @include respond(lg) {
     position: sticky;
