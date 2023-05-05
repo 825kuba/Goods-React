@@ -1,4 +1,5 @@
 @import '../../base';
+@import '../../keyframes';
 
 // CART MODAL
 .cart {
@@ -10,6 +11,12 @@
 
   @include respond(lg) {
     padding: 10rem 9rem;
+  }
+
+  & .cartEmpty {
+    font-family: 'Playfair Display';
+    text-align: center;
+    margin-top: 3rem;
   }
 
   &__wrapper {
@@ -93,162 +100,6 @@
     }
   }
 
-  // CART ITEM
-  &__item {
-    display: grid;
-    gap: 2rem;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(4, max-content);
-
-    // IMG
-    &__img {
-      cursor: pointer;
-      grid-row: 1 / 5;
-      grid-column: 1 / 5;
-      display: block;
-      width: 100%;
-      max-width: 100px;
-
-      // LAZY LOADING CLASS
-      &.lazy {
-        animation: pulsate 2s infinite;
-      }
-
-      // @include changeImgColor;
-
-      @include respond(md) {
-        grid-column: 1 / 4;
-      }
-
-      @include respond(md/lg) {
-        grid-row: 1 / 4;
-      }
-
-      @include respond(lg) {
-        grid-row: 1 / 5;
-        grid-column: 1 / 3;
-      }
-    }
-
-    // ITEM DESCRIPTION
-    &__text {
-      grid-row: 1 / 3;
-      grid-column: 5 / 11;
-      line-height: 1.5;
-
-      @include respond(md) {
-        grid-column: 4 / 11;
-      }
-
-      @include respond(lg) {
-        grid-column: 3 / 7;
-      }
-    }
-
-    // ITEM NAME
-    &__name {
-      & h4 {
-        font-weight: 500;
-      }
-      @include respond(md/lg) {
-        font-size: 2rem;
-      }
-    }
-
-    // ITEM SIZE
-    &__size {
-      font-size: 1.4rem;
-    }
-
-    // ITEM PRICE
-    &__price {
-      grid-row: 1 / 2;
-      grid-column: 11 / 13;
-      justify-self: end;
-
-      @include respond(md/lg) {
-        grid-row: 4 / 5;
-      }
-
-      @include respond(lg) {
-        grid-row: 1 / 2;
-        grid-column: 11 / 13;
-      }
-    }
-
-    // ITEM QTY
-    &__qty {
-      grid-row: 3 / 4;
-      grid-column: 5 / 10;
-      display: flex;
-
-      @include respond(md) {
-        grid-column: 4 / 9;
-      }
-
-      @include respond(md/lg) {
-        grid-row: 4 / 5;
-        grid-column: 1 / 5;
-      }
-
-      @include respond(lg) {
-        grid-row: 1 / 2;
-        grid-column: 8 / 10;
-      }
-    }
-
-    // ITEM QTY WRAP
-    &__input-wrap {
-      display: flex;
-      flex: 1;
-      gap: 1rem;
-
-      // INPUT FIELD
-      & input {
-        text-align: center;
-        width: 100%;
-      }
-
-      // + - BTNS
-      & button {
-        font-size: 2rem;
-      }
-    }
-
-    // BTNS IN CART ITEM
-    & button {
-      border: none;
-      background-color: transparent;
-      cursor: pointer;
-    }
-
-    // REMOVE BTN
-    &__remove {
-      grid-row: 4 / 5;
-      grid-column: 5 / 7;
-      font-size: 1.25rem;
-      justify-self: start;
-
-      &:hover {
-        color: $orange;
-      }
-
-      @include respond(md) {
-        grid-column: 4 / 7;
-      }
-
-      @include respond(md/lg) {
-        grid-row: 3 / 4;
-        grid-column: 4 / 7;
-      }
-
-      @include respond(lg) {
-        grid-row: 3 / 4;
-        grid-column: 3 / 5;
-      }
-    }
-  }
-
   // BOTTOM SECTION OF CART MODAL
   &__summary {
     padding: 4rem 0;
@@ -315,8 +166,7 @@
     display: flex;
     justify-content: space-between;
 
-    &,
-    & * {
+    & h3 {
       font-weight: 400;
     }
   }
@@ -334,25 +184,34 @@
     position: fixed;
     bottom: 0;
     right: 0;
-    background-color: $orange;
-    color: $black;
-    padding: 1rem 2rem;
+    background-color: $green;
+    color: $white;
+    // padding: 1rem 2rem;
+    // padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin: 1rem;
     border: none;
-    border-radius: 3px;
-    font-size: 2rem;
-    font-weight: 300;
-    width: max-content;
+    // border-radius: 3px;
+    border-radius: 50%;
+    font-size: 3rem;
+    // font-weight: 300;
+    // width: max-content;
+    // text-align: center;
+    vertical-align: middle;
+    width: 5rem;
+    height: 5rem;
     box-shadow: rgba($black, 0.3) 0 0 30px;
 
-    visibility: visible;
-    opacity: 1;
-    transition: opacity 0.3s ease;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 0.3s, opacity 0.3s ease;
 
-    &.hidden {
-      visibility: hidden;
-      opacity: 0;
-      transition: visibility 0s 0.3s, opacity 0.3s ease;
+    &.show {
+      visibility: visible;
+      opacity: 1;
+      transition: opacity 0.3s ease;
     }
   }
 }

@@ -12,7 +12,7 @@ const ShopLink = forwardRef((props, ref) => {
   return (
     <a className={classes.shopLink} onClick={clickLinkHandler}>
       <div className={classes.filling}></div>
-      {/* <img src={props.src} ref={ref}></img> */}
+      <img src={props.src} ref={ref}></img>
       <h3>{linkNameShort}</h3>
     </a>
   );

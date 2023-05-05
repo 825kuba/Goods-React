@@ -70,3 +70,16 @@
     transform: translateY(50px);
   }
 }
+
+// HIDE NUMBER INPUT BACKGROUND AND ARROWS
+@mixin numberInput {
+  background-color: transparent;
+  border: none;
+  appearance: none;
+  -moz-appearance: textfield;
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    appearance: none;
+    margin: 0;
+  }
+}

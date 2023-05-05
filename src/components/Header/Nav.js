@@ -26,7 +26,7 @@ const Nav = props => {
         </button>
       </div>
       <NavLinks
-        menuClass={mobileMenuOpened ? 'opened' : ''}
+        menuClass={mobileMenuOpened ? 'open' : ''}
         categories={props.categories}
         onClickLink={closeMobileMenuHandler}
         onChooseCategory={props.onChooseCategory}

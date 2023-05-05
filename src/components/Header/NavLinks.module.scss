@@ -19,7 +19,7 @@
   top: 100%;
   opacity: 0;
 
-  &.opened {
+  &.open {
     top: 0;
     opacity: 1;
   }
@@ -37,4 +37,9 @@
     background-color: transparent;
     opacity: 1;
   }
+}
+
+// HIDE BODY SCROLL BAR WHEN MODAL OPENED
+body:has(.navLinks.open) {
+  overflow: hidden;
 }

@@ -7,27 +7,57 @@ import { useState, useEffect } from 'react';
 const DUMMY_PRODUCTS = [
   {
     id: 'p1',
-    title: 'Super Amazing Jacket',
-    price: '59',
+    title: 'Palace jacket',
+    price: 199.99,
     img: 'placeholder.jpg',
+    sale: true,
+    descr:
+      'lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem ',
+    rating: {
+      count: 234,
+      rate: 4.1,
+    },
   },
   {
     id: 'p2',
-    title: 'Retro Pants 80s style',
-    price: '49',
+    title: 'Snowskate',
+    price: 399.99,
     img: 'placeholder.jpg',
+    sale: true,
+    descr:
+      'lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem ',
+    rating: {
+      count: 89,
+      rate: 4.4,
+    },
   },
+
   {
     id: 'p3',
-    title: 'Huge Plasma TV 50inch',
-    price: '399',
+    title: 'Independent trucks',
+    price: 299.49,
     img: 'placeholder.jpg',
+    sale: false,
+    descr:
+      'lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem ',
+    rating: {
+      count: 349,
+      rate: 4.7,
+    },
   },
+
   {
     id: 'p4',
     title: 'Brand new iPhone XX',
-    price: '499',
+    price: 499.49,
     img: 'placeholder.jpg',
+    sale: false,
+    descr:
+      'lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem ',
+    rating: {
+      count: 299,
+      rate: 3.6,
+    },
   },
 ];
 
@@ -80,17 +110,11 @@ const Products = props => {
 
       {products && (
         <div className={classes.products__container}>
-          {products.map((prod, i) => {
+          {products.map(prod => {
             return (
               <Product
                 key={prod.id}
-                id={prod.id}
-                title={prod.title}
-                price={prod.price}
-                img={prod.image}
-                sale={prod.sale}
-                descr={prod.description}
-                rating={prod.rating}
+                product={prod}
                 onClick={clickProductHandler}
               />
             );

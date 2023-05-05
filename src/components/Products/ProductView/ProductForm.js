@@ -1,29 +1,83 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useContext } from 'react';
+
+import CartContext from '../../../store/cart-context';
 
 import classes from './ProductForm.module.scss';
 
 import BigBtn from '../../UI/BigBtn';
 
 const ProductForm = props => {
+  // form refs
   const sizeRef = useRef();
   const colorRef = useRef();
   const qtyRef = useRef();
 
+  // input field error state
+  const [qtyError, setQtyError] = useState(false);
+
+  // cart context
+  const cartCtx = useContext(CartContext);
+
+  // + btn clicked
   const increaseQtyHandler = () => {
-    if (+qtyRef.current.value === 10) return;
+    // only allow max qty of 10
+    if (+qtyRef.current.value >= 10) return;
+    // if user left input field empty, show error and return
+    if (qtyRef.current.value === '') {
+      setQtyError(true);
+      return;
+    }
+    // increase ref value by 1
     qtyRef.current.value++;
+    // hide error
+    setQtyError(false);
   };
 
+  // - btn clicked
   const decreaseQtyHandler = () => {
-    if (+qtyRef.current.value === 1) return;
+    // only allow min qty of 1
+    if (+qtyRef.current.value <= 1) return;
+    // if user left input field empty, show error and return
+    if (qtyRef.current.value === '') {
+      setQtyError(true);
+      return;
+    }
+    // decrease ref value by 1
     qtyRef.current.value--;
+    // hide error
+    setQtyError(false);
+  };
+
+  // when input field blured
+  const blurQtyInputHandler = () => {
+    // if user left input field empty throw error
+    if (qtyRef.current.value === '' || +qtyRef.current.value <= 0)
+      setQtyError(true);
+    // else hide error
+    else setQtyError(false);
   };
 
   const submitFormHandler = e => {
     e.preventDefault();
-    console.log(sizeRef.current.value);
-    console.log(colorRef.current.value);
-    console.log(qtyRef.current.value);
+    // if user left input field empty, show error and return
+    if (qtyRef.current.value === '') {
+      setQtyError(true);
+      return;
+    }
+    // create obj and add form values to it, also create unique cartId
+    const newProduct = {
+      ...props.product,
+      size: sizeRef.current.value,
+      color: colorRef.current.value,
+      qty: +qtyRef.current.value,
+      cartId: `${props.product.id}_${sizeRef.current.value}_${colorRef.current.value}`,
+    };
+    // add item to cart
+    cartCtx.addItem(newProduct);
+    // hide erorr
+    setQtyError(false);
+    // close product and show cart
+    props.onToggleCart();
   };
 
   // SIZE OPTIONS JSX
@@ -94,11 +148,13 @@ const ProductForm = props => {
             -
           </button>
           <input
+            className={`${qtyError ? classes.error : ''}`}
             type="number"
             min="1"
             max="10"
             defaultValue="1"
             ref={qtyRef}
+            onBlur={blurQtyInputHandler}
             step="1"
             id="qty"
             aria-label="Enter product quantity"
@@ -113,6 +169,10 @@ const ProductForm = props => {
           </button>
         </div>
       </div>
+
+      {qtyError && (
+        <p className={classes.qtyErrorMsg}>Please enter valid quantity.</p>
+      )}
 
       <BigBtn aria-label={`Add ${props.product.title} to cart`}>
         Add to cart

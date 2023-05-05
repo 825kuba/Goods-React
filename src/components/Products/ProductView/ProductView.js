@@ -8,6 +8,11 @@ import ProductInfo from './ProductInfo';
 import ProductForm from './ProductForm';
 
 const ProductView = props => {
+  const closeProductOpenCart = () => {
+    props.onCloseProduct();
+    props.onOpenCart();
+  };
+
   return (
     <React.Fragment>
       <CloseBtn
@@ -18,7 +23,10 @@ const ProductView = props => {
         <ProductGallery product={props.product} />
         <div className={classes.productView__main}>
           <ProductInfo product={props.product} />
-          <ProductForm product={props.product} />
+          <ProductForm
+            product={props.product}
+            onToggleCart={closeProductOpenCart}
+          />
           <p className={classes.productView__descr}>
             {props.product.description}
           </p>

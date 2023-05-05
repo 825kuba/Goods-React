@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
+import CartProvider from './store/CartProvider';
+
 import Cart from './components/Cart/Cart';
 import Modal from './components/UI/Modal';
 import Header from './components/Header/Header';
@@ -51,6 +53,7 @@ function App() {
   const openProductHandler = product => {
     setProductOpen(true);
     setChosenProduct(product);
+    if (cartOpened) setCartOpened(false);
   };
 
   const closeProductHandler = () => {
@@ -78,14 +81,20 @@ function App() {
     );
 
   return (
-    <React.Fragment>
+    <CartProvider>
       <Modal modalOpen={cartOpened}>
-        {cartOpened && <Cart onCloseCart={closeCartHandler} />}
+        {cartOpened && (
+          <Cart
+            onCloseCart={closeCartHandler}
+            onClickProduct={openProductHandler}
+          />
+        )}
       </Modal>
       <Modal modalOpen={productOpen}>
         {productOpen && (
           <ProductView
             onCloseProduct={closeProductHandler}
+            onOpenCart={openCartHandler}
             product={chosenProduct}
           />
         )}
@@ -97,7 +106,7 @@ function App() {
       />
       <main>{mainContent}</main>
       <Footer />
-    </React.Fragment>
+    </CartProvider>
   );
 }
 

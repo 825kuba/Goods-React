@@ -1,0 +1,162 @@
+@import '../../base';
+
+// CART ITEM
+.cart-item {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(4, max-content);
+
+  // IMG
+  & img {
+    cursor: pointer;
+    grid-row: 1 / 5;
+    grid-column: 1 / 5;
+    display: block;
+    width: 100%;
+    max-width: 100px;
+
+    @include changeImgColor;
+
+    // LAZY LOADING CLASS
+    &.lazy {
+      animation: pulsate 2s infinite;
+    }
+
+    // @include changeImgColor;
+
+    @include respond(md) {
+      grid-column: 1 / 4;
+    }
+
+    @include respond(md/lg) {
+      grid-row: 1 / 4;
+    }
+
+    @include respond(lg) {
+      grid-row: 1 / 5;
+      grid-column: 1 / 3;
+    }
+  }
+
+  // ITEM DESCRIPTION
+  & .text {
+    grid-row: 1 / 3;
+    grid-column: 5 / 11;
+    line-height: 1.5;
+
+    @include respond(md) {
+      grid-column: 4 / 11;
+    }
+
+    @include respond(lg) {
+      grid-column: 3 / 7;
+    }
+  }
+
+  // ITEM NAME
+  & .title {
+    @include respond(md/lg) {
+      font-size: 2rem;
+    }
+  }
+
+  // ITEM SIZE
+  & .size {
+    font-size: 1.4rem;
+  }
+
+  // ITEM PRICE
+  & .price {
+    grid-row: 1 / 2;
+    grid-column: 11 / 13;
+    justify-self: end;
+
+    @include respond(md/lg) {
+      grid-row: 4 / 5;
+    }
+
+    @include respond(lg) {
+      grid-row: 1 / 2;
+      grid-column: 11 / 13;
+    }
+  }
+
+  & form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  // ITEM QTY
+  & .qty {
+    grid-row: 3 / 4;
+    grid-column: 5 / 10;
+    display: flex;
+
+    @include respond(md) {
+      grid-column: 4 / 9;
+    }
+
+    @include respond(md/lg) {
+      grid-row: 4 / 5;
+      grid-column: 1 / 5;
+    }
+
+    @include respond(lg) {
+      grid-row: 1 / 2;
+      grid-column: 8 / 10;
+    }
+  }
+
+  // ITEM QTY WRAP
+  & .input-wrap {
+    display: flex;
+    flex: 1;
+    gap: 1rem;
+
+    // INPUT FIELD
+    & input {
+      text-align: center;
+      width: 100%;
+      @include numberInput;
+    }
+
+    // + - BTNS
+    & button {
+      font-size: 2rem;
+    }
+  }
+
+  // ALL BTNS IN CART ITEM
+  & button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  // REMOVE BTN
+  & .remove-item {
+    grid-row: 4 / 5;
+    grid-column: 5 / 7;
+    font-size: 1.25rem;
+    justify-self: start;
+
+    &:hover {
+      color: $orange;
+    }
+
+    @include respond(md) {
+      grid-column: 4 / 7;
+    }
+
+    @include respond(md/lg) {
+      grid-row: 3 / 4;
+      grid-column: 4 / 7;
+    }
+
+    @include respond(lg) {
+      grid-row: 3 / 4;
+      grid-column: 3 / 5;
+    }
+  }
+}
