@@ -1,6 +1,8 @@
 @import '../../../variables';
 
 .picture {
+  @include reveal;
+
   & img {
     max-width: 100%;
   }

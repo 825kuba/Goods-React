@@ -89,3 +89,15 @@
     margin: 0;
   }
 }
+
+@mixin reveal {
+  opacity: 0;
+  transform: translateY(50px);
+
+  transition: all 0.35s ease-out 0.1s;
+
+  &.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

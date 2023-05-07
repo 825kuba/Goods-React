@@ -1,26 +1,61 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 
 import classes from './ShopSection.module.scss';
 
 import ShopLink from './ShopLink';
 import GalleryBtns from '../../UI/GalleryBtns';
 
-const ShopSection = props => {
-  const linkRef = useRef();
-  const galleryRef = useRef();
+import useGalleryObserver from '../../../hooks/use-galleryObserver';
 
+const ShopSection = props => {
+  const [
+    firstComponentRef,
+    lastComponentRef,
+    galleryRef,
+    firstComponentIsIntersecting,
+    lastComponentIsIntersecting,
+  ] = useGalleryObserver();
+
+  // scroll gallery by img width in the correct direction
   const scrollGalleryHandler = dir => {
-    galleryRef.current.scrollLeft += linkRef.current.clientWidth * dir;
+    galleryRef.current.scrollLeft +=
+      firstComponentRef.current.clientWidth * dir;
   };
 
-  // const imgObserver = new IntersectionObserver(
-  //   entries => {
-  //     entries.forEach(entry => {
-  //       console.log(entry);
-  //     });
-  //   },
-  //   { root: galleryRef.current, threshold: 0.8 }
-  // );
+  // give the first and last img their correct refs
+  const shopLinksJsx = props.categories.map((link, i, arr) => {
+    if (i === 0) {
+      return (
+        <ShopLink
+          linkName={link.name}
+          key={link.id}
+          src={link.src}
+          ref={firstComponentRef}
+          onChooseCategory={props.onChooseCategory}
+        />
+      );
+    }
+    if (i === arr.length - 1) {
+      return (
+        <ShopLink
+          linkName={link.name}
+          key={link.id}
+          src={link.src}
+          ref={lastComponentRef}
+          onChooseCategory={props.onChooseCategory}
+        />
+      );
+    } else {
+      return (
+        <ShopLink
+          linkName={link.name}
+          key={link.id}
+          src={link.src}
+          onChooseCategory={props.onChooseCategory}
+        />
+      );
+    }
+  });
 
   return (
     <section className={classes.shopSection}>
@@ -36,17 +71,13 @@ const ShopSection = props => {
           </p>
         </div>
         <div className={classes.links} ref={galleryRef}>
-          {props.categories.map(link => (
-            <ShopLink
-              linkName={link.name}
-              key={link.id}
-              src={link.src}
-              ref={linkRef}
-              onChooseCategory={props.onChooseCategory}
-            />
-          ))}
+          {shopLinksJsx}
         </div>
-        <GalleryBtns onClickBtn={scrollGalleryHandler} />
+        <GalleryBtns
+          onClickBtn={scrollGalleryHandler}
+          hideLeftBtn={firstComponentIsIntersecting}
+          hideRightBtn={lastComponentIsIntersecting}
+        />
       </div>
     </section>
   );

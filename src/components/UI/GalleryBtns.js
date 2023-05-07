@@ -10,6 +10,7 @@ const GalleryBtns = props => {
   return (
     <div className={classes.btns}>
       <button
+        className={`${props.hideLeftBtn ? classes.hidden : ''}`}
         data-dir={-1}
         aria-label={`Scroll gallery to the left`}
         onClick={clickBtnHandler}
@@ -17,6 +18,7 @@ const GalleryBtns = props => {
         <MdArrowBack />
       </button>
       <button
+        className={`${props.hideRightBtn ? classes.hidden : ''}`}
         data-dir={1}
         aria-label={`Scroll gallery to the right`}
         onClick={clickBtnHandler}

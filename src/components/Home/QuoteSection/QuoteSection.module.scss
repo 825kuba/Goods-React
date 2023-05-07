@@ -25,6 +25,7 @@
 
     & h2 {
       line-height: 110%;
+      @include reveal;
     }
   }
 }
