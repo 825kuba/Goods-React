@@ -18,11 +18,6 @@
 
     @include changeImgColor;
 
-    // // LAZY LOADING CLASS
-    // &.lazy {
-    //   animation: pulsate 2s infinite;
-    // }
-
     @include respond(md) {
       grid-column: 1 / 4;
     }

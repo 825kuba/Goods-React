@@ -1,9 +1,13 @@
 import classes from './StoryArticle.module.scss';
 
-import useRevealOnScroll from '../../../hooks/use-revealOnScroll';
+import useScrollObserver from '../../../hooks/use-scrollObserver';
 
 const StoryArticle = props => {
-  const [isIntersecting, componentRef] = useRevealOnScroll();
+  const [isIntersecting, componentRef] = useScrollObserver({
+    root: null,
+    threshold: 0,
+    rootMargin: '-25px',
+  });
 
   return (
     <article

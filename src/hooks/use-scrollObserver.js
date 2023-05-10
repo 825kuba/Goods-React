@@ -1,11 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
 
-const useRevealOnScroll = (
+const useScrollObserver = (
   // default options obj if none is passed to the hook
   options = {
     root: null,
     threshold: 0,
-    rootMargin: '-25px',
+    rootMargin: '0px',
   }
 ) => {
   const [isIntersecting, setIsIntersecting] = useState(false);
@@ -28,4 +28,4 @@ const useRevealOnScroll = (
   return [isIntersecting, componentRef];
 };
 
-export default useRevealOnScroll;
+export default useScrollObserver;

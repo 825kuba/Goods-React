@@ -21,12 +21,23 @@
       flex-direction: column;
       gap: 2rem;
     }
+
+    // to make the ref div sit on top left of gallery
+    position: relative;
+
+    & .refEle {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      background-color: transparent;
+    }
   }
 
   & .img {
     max-width: 72.5%;
     scroll-snap-align: start;
-    background-color: grey;
 
     @include respond(md/lg) {
       max-width: 100%;
@@ -65,9 +76,5 @@
     }
 
     @include changeImgColor;
-
-    &.lazy {
-      animation: pulsate 2s infinite;
-    }
   }
 }

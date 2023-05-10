@@ -1,12 +1,16 @@
 import classes from './QuoteSection.module.scss';
 
-import useRevealOnScroll from '../../../hooks/use-revealOnScroll';
+import useScrollObserver from '../../../hooks/use-scrollObserver';
 
 const QuoteSection = props => {
   // set in parent component
   const style = `${props.className}`;
 
-  const [isIntersecting, componentRef] = useRevealOnScroll();
+  const [isIntersecting, componentRef] = useScrollObserver({
+    root: null,
+    threshold: 0,
+    rootMargin: '-25px',
+  });
 
   return (
     <section className={`${classes.quote} ${classes[style]}`}>

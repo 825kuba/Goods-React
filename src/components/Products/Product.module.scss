@@ -51,10 +51,6 @@
     @include respond(xxl) {
       height: 900px;
     }
-
-    &.lazy {
-      animation: pulsate 2s infinite;
-    }
   }
 
   & h3 {

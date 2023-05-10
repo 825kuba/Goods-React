@@ -1,12 +1,16 @@
-import { useRef, useState, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 
 import classes from './ProductGallery.module.scss';
 
 import GalleryBtns from '../../UI/GalleryBtns';
 
+import placeholder from '../../../assets/placeholder.jpg';
+
 import useGalleryObserver from '../../../hooks/use-galleryObserver';
+import useScrollObserver from '../../../hooks/use-scrollObserver';
 
 const ProductGallery = props => {
+  // observers used to show and hide gallery btns
   const [
     firstComponentRef,
     lastComponentRef,
@@ -14,6 +18,9 @@ const ProductGallery = props => {
     firstComponentIsIntersecting,
     lastComponentIsIntersecting,
   ] = useGalleryObserver(props.product.category);
+
+  // observer used to lazy load imgs - component ref is passed to a tiny div that sits on the top left of gallery, when it intersects (immideatelly afte rmodal opens) - it starts loading real product img
+  const [isIntersecting, componentRef] = useScrollObserver();
 
   // used for desktop screen size gallery
   const [selectedImg, setSelectedImg] = useState('1');
@@ -40,7 +47,7 @@ const ProductGallery = props => {
   if (props.product.category === 'jewelery') {
     imagesJSX = (
       <img
-        src={props.product.image}
+        src={isIntersecting ? props.product.image : placeholder}
         alt={props.product.title}
         className={`${classes.img} ${classes.selected} ${classes.solo}`}
         data-color="natural"
@@ -55,7 +62,7 @@ const ProductGallery = props => {
         return (
           <img
             key={i}
-            src={props.product.image}
+            src={isIntersecting ? props.product.image : placeholder}
             alt={props.product.title}
             className={`${classes.img} ${
               i + 1 == selectedImg ? classes.selected : ''
@@ -70,7 +77,7 @@ const ProductGallery = props => {
         return (
           <img
             key={i}
-            src={props.product.image}
+            src={isIntersecting ? props.product.image : placeholder}
             alt={props.product.title}
             className={`${classes.img} ${
               i + 1 == selectedImg ? classes.selected : ''
@@ -84,7 +91,7 @@ const ProductGallery = props => {
         return (
           <img
             key={i}
-            src={props.product.image}
+            src={isIntersecting ? props.product.image : placeholder}
             alt={props.product.title}
             className={`${classes.img} ${
               i + 1 == selectedImg ? classes.selected : ''
@@ -101,9 +108,10 @@ const ProductGallery = props => {
     <div className={classes.productView__gallery}>
       <div className={classes.images} ref={galleryRef}>
         {imagesJSX}
+        <div ref={componentRef} className={classes.refEle}></div>
       </div>
       <img
-        src={props.product.image}
+        src={isIntersecting ? props.product.image : placeholder}
         alt={props.product.title}
         className={`${classes.img} ${classes['img--big']}`}
         data-color={selectedImg}

@@ -4,7 +4,13 @@ import CartContext from '../../store/cart-context';
 
 import classes from './CartItem.module.scss';
 
+import placeholder from '../../assets/placeholder.jpg';
+
+import useScrollObserver from '../../hooks/use-scrollObserver';
+
 const CartItem = props => {
+  const [isIntersecting, componentRef] = useScrollObserver();
+
   // quantity state
   const [productQty, setProductQty] = useState(props.product.qty);
   // cart context
@@ -42,7 +48,11 @@ const CartItem = props => {
 
   return (
     <div className={classes['cart-item']}>
-      <img src={props.product.image} data-color={props.product.color} />
+      <img
+        src={isIntersecting ? props.product.image : placeholder}
+        data-color={props.product.color}
+        ref={componentRef}
+      />
       <div className={classes.text}>
         <a
           href="#"

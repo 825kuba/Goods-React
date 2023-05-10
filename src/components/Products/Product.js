@@ -1,6 +1,12 @@
 import classes from './Product.module.scss';
 
+import placeholder from '../../assets/placeholder.jpg';
+
+import useScrollObserver from '../../hooks/use-scrollObserver';
+
 const Product = props => {
+  const [isIntersecting, componentRef] = useScrollObserver();
+
   const clickProductHandler = () => {
     props.onClick(props.product.id);
   };
@@ -9,7 +15,11 @@ const Product = props => {
     <article className={classes.product} onClick={clickProductHandler}>
       {props.product.sale ? <span className={classes.badge}>on sale</span> : ''}
 
-      <img src={props.product.image} alt={props.product.title} />
+      <img
+        src={isIntersecting ? props.product.image : placeholder}
+        alt={props.product.title}
+        ref={componentRef}
+      />
       <h3>{props.product.title}</h3>
 
       <div className={classes.price}>
